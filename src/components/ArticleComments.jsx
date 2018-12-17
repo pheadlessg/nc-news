@@ -113,25 +113,22 @@ class ArticleComments extends Component {
     this.getArticleComments();
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.isLoading !== this.state.isLoading) {
-      this.getArticleComments();
-    }
-    if (prevState.query !== this.state.query) {
-      this.getArticleComments();
-    }
-    if (prevState.direction !== this.state.direction) {
-      this.getArticleComments();
-    }
-    if (prevState.isPosted !== this.state.isPosted) {
-      this.getArticleComments();
-    }
-    if (prevState.commentactions !== this.state.commentactions) {
-      this.getArticleComments();
-    }
-    if (prevState.page !== this.state.page) {
+    const updateOnMethods = [
+      'isLoading',
+      'query',
+      'direction',
+      'page',
+      'isPosted',
+      'commentactions'
+    ];
+    const updateOnMethodChecker = element => {
+      return prevState[element] !== this.state[element];
+    };
+    if (updateOnMethods.some(updateOnMethodChecker)) {
       this.getArticleComments();
     }
   }
+
   handleChange = event => {
     const { value, id } = event.target;
     this.setState({ [id]: value });

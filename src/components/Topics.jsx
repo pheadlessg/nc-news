@@ -50,13 +50,12 @@ class Topics extends Component {
     this.setState({ isLoading: false });
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.isLoading !== this.state.isLoading) {
+    const updateOnMethods = ['isLoading', 'isPosted'];
+    const updateOnMethodChecker = element => {
+      return prevState[element] !== this.state[element];
+    };
+    if (updateOnMethods.some(updateOnMethodChecker)) {
       this.getAllTopics();
-      this.setState({ isPosted: false, addTopicToggle: false });
-    }
-    if (prevState.isPosted !== this.state.isPosted) {
-      this.getAllTopics();
-      this.setState({ isPosted: false, addTopicToggle: false });
     }
   }
   handlePost = posted => {

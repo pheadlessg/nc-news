@@ -77,16 +77,11 @@ class Articles extends Component {
     this.setState({ isLoading: false });
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.isLoading !== this.state.isLoading) {
-      this.getAllArticles();
-    }
-    if (prevState.query !== this.state.query) {
-      this.getAllArticles();
-    }
-    if (prevState.direction !== this.state.direction) {
-      this.getAllArticles();
-    }
-    if (prevState.page !== this.state.page) {
+    const updateOnMethods = ['isLoading', 'query', 'direction', 'page'];
+    const updateOnMethodChecker = element => {
+      return prevState[element] !== this.state[element];
+    };
+    if (updateOnMethods.some(updateOnMethodChecker)) {
       this.getAllArticles();
     }
   }
