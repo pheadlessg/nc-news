@@ -7,13 +7,14 @@ class UserCard extends Component {
     isLoading: true
   };
   render() {
-    if (this.state.user.user) {
+    const { user } = this.state.user;
+    if (user) {
       return (
         <div>
           <img
             height="50"
             width="50"
-            src={`${this.state.user.user.avatar_url}`}
+            src={`${user.avatar_url}`}
             alt="User avatar"
             onError={e => {
               e.target.onerror = null;
