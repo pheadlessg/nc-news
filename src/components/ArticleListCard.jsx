@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import '../ArticleListCard.css';
 
 const ArticleListCard = ({ data }) => {
   const {

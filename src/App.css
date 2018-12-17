@@ -26,40 +26,6 @@
   border: solid 1px rgb(3, 3, 3);
   background-color: rgba(72, 72, 82, 0.1);
 }
-.articlelink {
-  align-items: stretch;
-  display: grid;
-  height: 20vh;
-  grid-template: 1fr / 1fr 1fr 1fr 1fr 1fr 1fr;
-  border: solid 1px rgb(0, 0, 0);
-  grid-template-areas:
-    'linklink'
-    'linktopic'
-    'linkuser'
-    'linkdate'
-    'linkvotes'
-    'linkcomments';
-}
-.linklink {
-  grid-area: 'linklink';
-  text-align: center;
-  border: solid 1px black;
-}
-.linktopic {
-  border: solid 1px black;
-}
-.linkuser {
-  border: solid 1px black;
-}
-.linkdate {
-  border: solid 1px black;
-}
-.linkvotes {
-  border: solid 1px black;
-}
-.linkcomments {
-  border: solid 1px black;
-}
 .footer {
   grid-area: footer;
   border: solid 1px rgb(56, 51, 56);

@@ -13,12 +13,14 @@ class TopicArticles extends Component {
     moreArticles: false
   };
   render() {
+    const { desc } = this.props.location.state;
     if (this.state.isLoading) {
       return <h1>LOADING</h1>;
     } else {
       return (
         <>
           <h1>{this.state.topic}</h1>
+          <h2>{desc}</h2>
           <div className="articlelist">
             <select id="query" onChange={this.handleChange}>
               <option value="created_at">Date Posted</option>
@@ -93,16 +95,11 @@ class TopicArticles extends Component {
     this.setState({ isLoading: false });
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.isLoading !== this.state.isLoading) {
-      this.getArticleTopics();
-    }
-    if (prevState.query !== this.state.query) {
-      this.getArticleTopics();
-    }
-    if (prevState.direction !== this.state.direction) {
-      this.getArticleTopics();
-    }
-    if (prevState.page !== this.state.page) {
+    const updateOnMethods = ['isLoading', 'query', 'direction', 'page'];
+    const updateOnMethodChecker = element => {
+      return prevState[element] !== this.state[element];
+    };
+    if (updateOnMethods.some(updateOnMethodChecker)) {
       this.getArticleTopics();
     }
   }

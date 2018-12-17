@@ -23,7 +23,11 @@ class Topics extends Component {
         <div className="topicpage">
           {this.state.topics.map((topic, index) => {
             return (
-              <Link key={index * 3.14} to={`/articles/t/${topic.slug}`}>
+              <Link
+                key={index * 3.14}
+                to={`/articles/t/${topic.slug}`}
+                state={{ desc: topic.description }}
+              >
                 <div key={index} className="topiccard">
                   <h2 className="topicslug" key={topic.slug}>
                     {topic.slug}
