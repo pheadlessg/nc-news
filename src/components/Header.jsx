@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Header.css';
 import { Link } from '@reach/router';
 import UserCard from './UserCard';
 
@@ -8,19 +9,21 @@ const Header = data => {
       <span className="headertext">NC News</span>
       {data.user ? (
         <>
-          <UserCard data={data.user} />
-          <nav className="homelink">
-            <Link to="/">Home</Link>
-          </nav>
-          <nav className="topiclink">
-            <Link to="/topics/">Topics</Link>
-          </nav>
-          <nav className="postlink">
-            <Link to="/postarticle/">Post New Article</Link>
-          </nav>
-          <button onClick={data.logout} className="logout">
-            Log Out
-          </button>
+          <div className="headeruser">
+            <UserCard data={data.user} />
+            <button onClick={() => data.logout('')} className="logout">
+              Log Out
+            </button>
+          </div>
+          <Link to="/" className="homelink">
+            <span>Home</span>
+          </Link>
+          <Link to="/topics/" className="topiclink">
+            <span>Topics</span>
+          </Link>
+          <Link to="/postarticle/" className="postlink">
+            <span>Post New Article</span>
+          </Link>
         </>
       ) : (
         <h2>Please Log In</h2>

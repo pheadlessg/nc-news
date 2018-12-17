@@ -1,0 +1,36 @@
+.header {
+  grid-area: header;
+  display: grid;
+  grid-template: 2fr / 1fr 1fr 1fr;
+  grid-template-areas:
+    'headertext none headeruser'
+    'homelink postlink topiclink';
+  border: solid 1px rgb(2, 2, 2);
+  background-color: rgba(107, 107, 107, 0.267);
+}
+.headertext {
+  grid-area: headertext;
+  font-size: 40px;
+  margin-top: 20px;
+}
+.homelink {
+  grid-area: homelink;
+  font-size: 2vw;
+  margin-bottom: 10px;
+}
+.topiclink {
+  grid-area: topiclink;
+  font-size: 20px;
+}
+.postlink {
+  grid-area: postlink;
+  font-size: 20px;
+}
+.headeruser {
+  grid-area: headeruser;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.logout {
+}

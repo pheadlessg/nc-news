@@ -3,6 +3,7 @@ import * as api from './api';
 import { Link, navigate } from '@reach/router';
 import VoteButton from './VoteButton';
 import DeleteButton from './DeleteButton';
+import ArticleComments from './ArticleComments';
 
 class SingleArticle extends Component {
   state = {
@@ -16,7 +17,9 @@ class SingleArticle extends Component {
     user: {},
     isLoading: true,
     isDeleted: '',
-    uservote: 0
+    uservote: 0,
+    showComments: false,
+    firstRun: false
   };
   render() {
     if (this.state.isLoading) {
@@ -55,9 +58,20 @@ class SingleArticle extends Component {
               />
             </Link>
           ) : null}
-          <Link to={`/articles/${article_id}/comments`}>
-            <p className="commentcount">Comments: {comment_count}</p>
-          </Link>
+          {this.state.showComments ? (
+            <>
+              <button onClick={this.handleShowComments}>Hide Comments</button>
+              <ArticleComments
+                article_id={this.props.article_id}
+                user={this.props.user}
+              />
+            </>
+          ) : (
+            <>
+              <p className="commentcount">Comments: {comment_count}</p>
+              <button onClick={this.handleShowComments}>Show Comments</button>
+            </>
+          )}
         </div>
       );
     }
@@ -80,12 +94,21 @@ class SingleArticle extends Component {
       });
   }
   componentDidMount() {
-    window.scrollTo(0, 0);
+    if (!this.state.firstRun) {
+      window.scrollTo(0, 0);
+      this.setState({ firstRun: true });
+    }
     this.getSingleArticle();
     this.setState({ isLoading: false });
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.votes !== this.state.votes) {
+      this.getSingleArticle();
+    }
+    if (prevState.showComments !== this.state.showComments) {
+      this.getSingleArticle();
+    }
+    if (prevState.comment_count !== this.state.comment_count) {
       this.getSingleArticle();
     }
   }
@@ -97,6 +120,9 @@ class SingleArticle extends Component {
   };
   handleDelete = deleted => {
     this.setState({ isDeleted: deleted });
+  };
+  handleShowComments = () => {
+    this.setState({ showComments: !this.state.showComments });
   };
 }
 

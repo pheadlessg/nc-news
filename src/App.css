@@ -2,7 +2,7 @@
   text-align: center;
   height: 100vh;
   display: grid;
-  grid-template: 1fr 10fr 1fr / 1fr;
+  grid-template: 2fr 10fr 1fr / 1fr;
   grid-template-areas:
     'header'
     'articlelist'
@@ -17,32 +17,6 @@
   font-style: normal;
   font-variant: normal;
   text-transform: none;
-}
-.header {
-  grid-area: header;
-  text-align: center;
-  display: grid;
-  grid-template: 1fr / 7fr 1fr 1fr 1fr;
-  grid-template-areas:
-    'headertext'
-    'homelink'
-    'topiclink'
-    'postlink';
-  border: solid 1px rgb(2, 2, 2);
-  background-color: rgba(107, 107, 107, 0.267);
-}
-.headertext {
-  align-items: baseline;
-  font-size: 40px;
-}
-.homelink {
-  font-size: 30px;
-}
-.topiclink {
-  font-size: 30px;
-}
-.postlink {
-  font-size: 30px;
 }
 .articlelist {
   grid-area: articlelist;

@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header user={this.state.user} logout={this.logoutUser} />
+        <Header user={this.state.user} logout={this.setUser} />
         <Auth user={this.state.user} setUser={this.setUser}>
           <Router>
             <Articles path="/" />
@@ -45,9 +45,6 @@ class App extends Component {
   }
   setUser = user => {
     this.setState({ user });
-  };
-  logoutUser = () => {
-    this.setState({ user: '' });
   };
 }
 
