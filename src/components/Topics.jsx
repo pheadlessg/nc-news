@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from './api';
 import { Link } from '@reach/router';
 import PostNewTopic from './PostNewTopic';
+import '../Topics.css';
 
 class Topics extends Component {
   state = {
@@ -12,7 +13,7 @@ class Topics extends Component {
   };
   render() {
     return (
-      <>
+      <div className="topicpage">
         <h1 className="topicheader">Topics</h1>
         {!this.state.addTopicToggle ? (
           <button onClick={this.handleTopicButton}>Add New Topic</button>
@@ -20,15 +21,16 @@ class Topics extends Component {
           <PostNewTopic posted={this.handlePost} topics={this.state.topics} />
         )}
 
-        <div className="topicpage">
+        <div className="topiclist">
           {this.state.topics.map((topic, index) => {
             return (
               <Link
+                className="topiccard"
                 key={index * 3.14}
                 to={`/articles/t/${topic.slug}`}
                 state={{ desc: topic.description }}
               >
-                <div key={index} className="topiccard">
+                <div key={index}>
                   <h2 className="topicslug" key={topic.slug}>
                     {topic.slug}
                   </h2>
@@ -40,7 +42,7 @@ class Topics extends Component {
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
   getAllTopics() {

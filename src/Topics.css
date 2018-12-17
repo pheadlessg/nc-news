@@ -1,0 +1,52 @@
+.topicpage {
+  display: grid;
+  grid-template: 1fr 1fr 10fr / 1fr;
+  grid-template-areas:
+    'topicheader'
+    'topicform'
+    'topiclist';
+}
+.topiclist {
+  grid-area: topiclist;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  align-content: flex-start;
+}
+.topicform {
+  grid-area: topicform;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas: 'topicsluginput topicdescriptioninput';
+}
+.topicslug {
+  grid-area: topicslug;
+  margin: 10px 10px;
+}
+.topicdescription {
+  grid-area: topicdescription;
+  margin: 10px 10px;
+  padding: 0 0;
+}
+.topicheader {
+  grid-area: topicheader;
+}
+.topiccard {
+  margin: 10px 10px;
+  background-color: rgba(112, 128, 144, 0.219);
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas:
+    'topicslug'
+    'topicdescription';
+}
+.topicsluginput {
+  grid-area: topicsluginput;
+  margin-right: 30px;
+}
+.topicdescriptioninput {
+  grid-area: topicdescriptioninput;
+  margin-left: 30px;
+}

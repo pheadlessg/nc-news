@@ -143,39 +143,6 @@
   position: relative;
   top: 1px;
 }
-.topicpage {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.topicslug {
-  grid-area: 'topicslug';
-  margin: 0 0;
-}
-.topicdescription {
-  grid-area: 'topicdescription';
-  margin: 0 0;
-  padding: 0 0;
-}
-.topicform {
-  grid-area: 'topicform';
-}
-.topicheader {
-  grid-area: 'topicheader';
-  border: solid 1px black;
-}
-.topiccard {
-  width: 200px;
-  height: 100px;
-  margin: 10px 10px;
-  background-color: slategray;
-  display: grid;
-  grid-template: 50px 50px / auto;
-  grid-template-areas:
-    'topicslug'
-    'topicdescription';
-}
 .articlebodytext {
   font-size: 25px;
 }

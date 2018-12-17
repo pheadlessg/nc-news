@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import * as api from './api';
+import '../Topics.css';
 
 class PostNewTopic extends Component {
   state = {
