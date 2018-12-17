@@ -102,13 +102,11 @@ class SingleArticle extends Component {
     this.setState({ isLoading: false });
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.votes !== this.state.votes) {
-      this.getSingleArticle();
-    }
-    if (prevState.showComments !== this.state.showComments) {
-      this.getSingleArticle();
-    }
-    if (prevState.comment_count !== this.state.comment_count) {
+    const updateOnMethods = ['votes', 'showComments', 'comment_count'];
+    const updateOnMethodChecker = element => {
+      return prevState[element] !== this.state[element];
+    };
+    if (updateOnMethods.some(updateOnMethodChecker)) {
       this.getSingleArticle();
     }
   }

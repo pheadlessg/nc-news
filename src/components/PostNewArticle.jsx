@@ -81,6 +81,7 @@ class PostNewArticle extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.responseArticle !== this.state.responseArticle) {
       navigate(`/articles/${this.state.responseArticle.article.article_id}`);
+      alert('Article Posted!');
     }
   }
   getAllTopics() {
